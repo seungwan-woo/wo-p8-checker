@@ -1,0 +1,23 @@
+{
+  "name": "wo-p8-checker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/seungwan-woo/wo-p8-checker.git",
+  "author": "우승완/Basic Platform개발그룹(MX)/삼성전자 <s-w.woo@samsung.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.11",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "axios": "^1.6.3",
+    "fp-ts": "^2.16.1"
+  }
+}
