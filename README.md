@@ -1,3 +1,4 @@
+[![WO-P8. Memory Budget Check](https://github.com/seungwan-woo/wo-p8-checker/actions/workflows/jestAction.yml/badge.svg)](https://github.com/seungwan-woo/wo-p8-checker/actions/workflows/jestAction.yml)
 ## WFF
 - https://developer.android.com/training/wearables/wff
 
