@@ -1,12 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`memoryUsageUtil should include 10MB/100MB, when fetchMemoryUsageDocument() and getMemoryUsageContent() 1`] = `
-Document {
-  "location": null,
-}
-`;
-
-exports[`memoryUsageUtil should include 10MB/100MB, when fetchMemoryUsageDocument() and getMemoryUsageContent() 2`] = `
+exports[`memoryUsageUtil should get memory usage content, when getMemoryUsageContent(memoryUsageDoc) 1`] = `
 "Assets do not exceed the memory budget of 10 MB in ambient
             mode, and 100 MB in interactive mode."
+`;
+
+exports[`memoryUsageUtil should get memory-usage document, when fetchMemoryUsageDocument() 1`] = `
+"
+          Performance
+          Memory Usage - Watch Face Format
+          WO-P8
+          
+            Assets do not exceed the memory budget of 10 MB in ambient
+            mode, and 100 MB in interactive mode.
+            
+          
+        "
 `;

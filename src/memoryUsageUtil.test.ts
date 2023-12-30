@@ -1,20 +1,38 @@
 import { describe, expect, test } from "@jest/globals";
 import {
   fetchMemoryUsageDocument,
+  hasMemoryBudget,
   getMemoryUsageContent,
 } from "./memoryUsageUtil";
 
 describe("memoryUsageUtil", () => {
-  test("should include 10MB/100MB, when fetchMemoryUsageDocument() and getMemoryUsageContent()", async () => {
-    const memoryUsageDoc: Document | undefined =
-      await fetchMemoryUsageDocument();
-    expect(memoryUsageDoc).not.toBeUndefined();
-    expect(memoryUsageDoc).toMatchSnapshot();
+  let memoryUsageDoc: Document | undefined;
+  let memoryUsage: string | undefined;
 
-    const memoryUsage = getMemoryUsageContent(memoryUsageDoc!);
+  beforeAll(async () => {
+    memoryUsageDoc = await fetchMemoryUsageDocument();
+  });
+
+  test("should get memory-usage document, when fetchMemoryUsageDocument()", async () => {
+    expect(memoryUsageDoc).not.toBeUndefined();
+    expect(memoryUsageDoc?.body.textContent).toMatchSnapshot();
+  });
+
+  test("should get memory usage content, when getMemoryUsageContent(memoryUsageDoc)", async () => {
+    expect(memoryUsageDoc).not.toBeUndefined();
+
+    memoryUsage = getMemoryUsageContent(memoryUsageDoc!);
     expect(memoryUsage).not.toBeUndefined();
     expect(memoryUsage).toMatchSnapshot();
-    expect(memoryUsage?.includes("100 MB")).toBeTruthy();
-    expect(memoryUsage?.includes("10 MB")).toBeTruthy();
+  });
+
+  test("should be truthy, when hasMemoryBudget(Normal)", () => {
+    const normalMemoryBudget = hasMemoryBudget(memoryUsage!, "Normal");
+    expect(normalMemoryBudget).toBeTruthy();
+  });
+
+  test("should be truthy, when hasMemoryBudget(Ambient)", () => {
+    const ambientMemoryBudget = hasMemoryBudget(memoryUsage!, "Ambient");
+    expect(ambientMemoryBudget).toBeTruthy();
   });
 });
